@@ -1,0 +1,25 @@
+%META:TOPICINFO{author="supplieth" comment="autosave" date="1359041068" format="1.1" version="1"}%
+---+!! %TOPIC%
+
+
+%TOC%
+
+---++ Summary of Contents
+
+
+---++ Features
+   * Perform efficient structured queries on data in forms
+
+
+---++ Installation Instructions
+%$INSTALL_INSTRUCTIONS%
+
+---++ Contrib Info
+|  Author: | Daniel Supplieth - Modell-Aachen GmbH|
+|  License: | GPL |
+|  Release: | %$RELEASE% |
+|  Version: | %$VERSION% |
+|  Change History: | |
+|  30 Mar 2017 | Initial version |
+|  Dependencies: | %$DEPENDENCIES% |
+
