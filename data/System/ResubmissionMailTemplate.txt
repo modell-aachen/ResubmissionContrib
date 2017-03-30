@@ -20,7 +20,7 @@ format="(workflowmeta_lasttime_$1_dt:[NOW-$percntWEBPREF{\"RESUBMISSION_$percntC
 %TMPL:END%
 
 %TMPL:DEF{"SearchByWeb"}%%{
-   }%%SOLRSEARCH{"type:topic field_Responsible_s:%RENDERUSER{"%to_WikiName%" format="$cUID" convert="on"}% web:%web% -topic:%WEBPREF{"RESUBMISSION_IGNORE" web="%web%" alt="$percntRESUBMISSION_IGNORE$percnt"}% %TMPL:P{"stateQuery" web="%web%"}%"
+}%%SOLRSEARCH{"type:topic field_Responsible_s:%RENDERUSER{"%to_WikiName%" format="$cUID" convert="on"}% web:%web% -topic:%WEBPREF{"RESUBMISSION_IGNORE" web="%web%" alt="$percntRESUBMISSION_IGNORE$percnt"}% %TMPL:P{"stateQuery" web="%web%"}%"
    id="%web%%ModacMailCount%"
    sort="workflowstate_statetype_s asc"
    rows="1"
