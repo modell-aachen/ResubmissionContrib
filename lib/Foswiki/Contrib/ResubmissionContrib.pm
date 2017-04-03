@@ -16,11 +16,53 @@ our $SITEPREFS = {
     RESUBMISSION_APPROVED => '365',
     RESUBMISSION_DISCUSSION => '30',
     RESUBMISSION_DRAFT => '30',
-    RESUBMISSION_IGNORE => '(Web* OR *Template)',
+    RESUBMISSION_IGNORE => 'Web* OR *Template',
     RESUBMISSION_SENDMAIL => '0',
     RESUBMISSION_SENDMAIL_GROUP => 'KeyUserGroup',
     RESUBMISSION_SENDMAIL_RESPONSIBLE => 1
 };
+
+# MaintenancePlugin compatibility
+sub maintenanceHandler {
+    Foswiki::Plugins::MaintenancePlugin::registerCheck("resubmission:topic", {
+        name => "Resubmission topic is missing",
+        description => "Topic with all Topics for Resubmission is missing",
+        check => sub {
+            require File::Spec;
+            my $file = File::Spec->catfile('data', 'Main', 'Resubmission.txt');
+            if(!-e $file) {
+                return {
+                    result => 1,
+                    priority => $Foswiki::Plugins::MaintenancePlugin::ERROR,
+                    solution => "Copy Resubmission.txt from _apps/Resubmission to Main"
+                }
+            }
+            return { result => 0 };
+        }
+    });
+    Foswiki::Plugins::MaintenancePlugin::registerCheck("resubmission:crontab", {
+        name => "Send resubmission mails",
+        description => "Crontab with sendmail for resubmission should be existent.",
+        check => sub {
+            require File::Spec;
+            my $file = File::Spec->catfile('/', 'etc', 'cron.d', 'foswiki_jobs');
+            if( -e $file) {
+                open(my $fh, '<', $file);
+                local $/;
+                my $result = $fh !~ /ResubmissionMail/;
+                close $fh;
+                if($result) {
+                    return {
+                        result => 1,
+                        priority => $Foswiki::Plugins::MaintenancePlugin::ERROR,
+                        solution => "Add cronjob to foswiki_jobs according the documentation. [[%SYSTEMWEB%.ResubmissionContrib]]"
+                    }
+                }
+            }
+            return { result => 0 };
+        }
+    });
+}
 
 1;
 __END__

@@ -1,7 +1,7 @@
 %TMPL:INCLUDE{"mailtemplatescontrib"}%
 
 %TMPL:DEF{"ModacMailPrimer"}%
-%SOLRSEARCH{"(%FORMATLIST{"%RESUBMISSION_WEBS%" format="(web:$1 AND ($percntTMPL:P{\"stateQuery\" web=\"$1\"}$percnt) AND -topic:$percntWEBPREF{\"RESUBMISSION_IGNORE\" web=\"$1\" alt=\"$percntRESUBMISSION_IGNORE$percnt\"}$percnt)" separator=" OR " exclude="%FORMATLIST{"%RESUBMISSION_WEBS%" format="$percntIF{\"'$percntWEBPREF{\"RESUBMISSION_SENDMAIL\" web=\"$1\" alt=\"$percntRESUBMISSION_SENDMAIL$percnt\"}$percnt'='0'\" then=\"$1\"}$percnt"}%"}%) type:topic"
+%SOLRSEARCH{"(%FORMATLIST{"%RESUBMISSION_WEBS%" format="(web:$1 AND ($percntTMPL:P{\"stateQuery\" web=\"$1\"}$percnt) AND -topic:($percntWEBPREF{\"RESUBMISSION_IGNORE\" web=\"$1\" alt=\"$percntRESUBMISSION_IGNORE$percnt\"}$percnt))" separator=" OR " exclude="%FORMATLIST{"%RESUBMISSION_WEBS%" format="$percntIF{\"'$percntWEBPREF{\"RESUBMISSION_SENDMAIL\" web=\"$1\" alt=\"$percntRESUBMISSION_SENDMAIL$percnt\"}$percnt'='0'\" then=\"$1\"}$percnt"}%"}%) type:topic"
 rows="1"
 id="who"
 facets="field_Responsible_s"
@@ -20,7 +20,7 @@ format="(workflowmeta_lasttime_$1_dt:[NOW-$percntWEBPREF{\"RESUBMISSION_$percntC
 %TMPL:END%
 
 %TMPL:DEF{"SearchByWeb"}%%{
-}%%SOLRSEARCH{"type:topic field_Responsible_s:%RENDERUSER{"%to_WikiName%" format="$cUID" convert="on"}% web:%web% -topic:%WEBPREF{"RESUBMISSION_IGNORE" web="%web%" alt="$percntRESUBMISSION_IGNORE$percnt"}% %TMPL:P{"stateQuery" web="%web%"}%"
+}%%SOLRSEARCH{"type:topic field_Responsible_s:%RENDERUSER{"%to_WikiName%" format="$cUID" convert="on"}% web:%web% -topic:(%WEBPREF{"RESUBMISSION_IGNORE" web="%web%" alt="$percntRESUBMISSION_IGNORE$percnt"}%) %TMPL:P{"stateQuery" web="%web%"}%"
    id="%web%%ModacMailCount%"
    sort="workflowstate_statetype_s asc"
    rows="1"
@@ -39,7 +39,7 @@ format="(workflowmeta_lasttime_$1_dt:[NOW-$percntWEBPREF{\"RESUBMISSION_$percntC
 %FORMATLIST{"%RESUBMISSION_WEBS%" format="$percntIF{\"'$percntWEBPREF{\"RESUBMISSION_SENDMAIL\" web=\"$1\" alt=\"$percntRESUBMISSION_SENDMAIL$percnt\"}$percnt'='1' AND $percntSOLRFORMAT{\"$1$percntModacMailCount$percnt\" format=\"$count\" row=\"1\"}$percnt0>0\" then=\"$dollarpercntMAKETEXT{\\"The following pages should be examined in the web of [_1] for up-to-dateness\\" arg1=\\"$1\\"}$dollarpercnt:$n$dollarpercntTMPL:P{\\"webList\\" web=\\"$1\\"}$dollarpercnt\"}$percnt" separator=""}%
 
 %MAKETEXT{"An overview of all resubmissions can be found here"}%:
-%SCRIPTURL{"view"}%/%SYSTEMWEB%/Resubmission
+%SCRIPTURL{"view"}%/%USERSWEB%/Resubmission
 
 %MAKETEXT{"This is an automatically generated message. Please do not reply to this email."}%
 
