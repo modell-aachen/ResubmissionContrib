@@ -5,7 +5,7 @@
 %TOC%
 
 ---++ Features
-   * Provides an overview, which pages need to be reviewed. ([[%SYSTEMWEB%.Resubmission]])
+   * Provides an overview, which pages need to be reviewed. ([[%USERSWEB%.Resubmission]])
    * Can send emails for topics which needs reviewed within the last 24h.
       * By Group
       * To Responsible
