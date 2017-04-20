@@ -12,7 +12,7 @@ format="(workflowmeta_lasttime_$1_dt:[NOW-$percntWEBPREF{\"RESUBMISSION_$percntC
 %TMPL:END%
 
 %TMPL:DEF{"SearchByWeb"}%%{
-   }%%SOLRSEARCH{"type:topic web:%web% -topic:(%WEBPREF{"RESUBMISSION_IGNORE" web="%web%" alt="$percntRESUBMISSION_IGNORE$percnt"}%) %TMPL:P{"stateQuery" web="%web%"}%"
+   }%%SOLRSEARCH{"type:topic web:%web% workflowstate_statetype_s:* -topic:(%WEBPREF{"RESUBMISSION_IGNORE" web="%web%" alt="$percntRESUBMISSION_IGNORE$percnt"}%) (%TMPL:P{"stateQuery" web="%web%"}%)"
    id="%web%%ModacMailCount%"
    sort="workflowstate_statetype_s asc"
    rows="1"
@@ -41,7 +41,7 @@ format="(workflowmeta_lasttime_$1_dt:[NOW-$percntWEBPREF{\"RESUBMISSION_$percntC
 %TMPL:END%
 
 %TMPL:DEF{"webList"}%%{
-}%%SOLRFORMAT{"%web%%ModacMailCount%" format="   * $percntWORKFLOWMETA{\"displayname\" web=\"$web\" topic=\"$topic\"}$percnt $title %SCRIPTURL%$url $workflowmeta_lasttime_currentstate_s $percntRENDERUSER{\"$field_Responsible_s\" convert=\"on\"}$percnt$n"}%%{
+}%%SOLRFORMAT{"%web%%ModacMailCount%" format="   * [$percntWORKFLOWMETA{\"displayname\" web=\"$web\" topic=\"$topic\"}$percnt] $title %SCRIPTURL%$url (%MAKETEXT{"Responsible"}%: $percntRENDERUSER{\"$field_Responsible_s\" convert=\"on\"}$percnt)$n"}%%{
 }%%TMPL:END%
 
 %TMPL:DEF{"ModacMailCharset"}%charset="utf-8";%TMPL:END%
