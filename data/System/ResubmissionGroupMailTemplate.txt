@@ -15,7 +15,7 @@ format="(workflowmeta_lasttime_$1_dt:[NOW-$percntWEBPREF{\"RESUBMISSION_$percntC
    }%%SOLRSEARCH{"type:topic web:%web% workflowstate_statetype_s:* -topic:(%WEBPREF{"RESUBMISSION_IGNORE" web="%web%" alt="$percntRESUBMISSION_IGNORE$percnt"}%) (%TMPL:P{"stateQuery" web="%web%"}%)"
    id="%web%%ModacMailCount%"
    sort="workflowstate_statetype_s asc"
-   rows="1"
+   rows="9999"
    fields="topic,webtopic,web,title,url,workflowmeta_lasttime_currentstate_s,field_Responsible_s"}%%{
 }%%TMPL:END%
 
