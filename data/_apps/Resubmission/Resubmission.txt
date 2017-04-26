@@ -7,4 +7,5 @@
 %META:PREFERENCE{name="NOWYSIWYG" title="NOWYSIWYG" type="Local" value="1"}%
 %META:PREFERENCE{name="WORKFLOW" title="WORKFLOW" type="Local" value=""}%
 %META:PREFERENCE{name="NO_MODAC_HEAD" title="NO_MODAC_HEAD" type="Set" value="1"}%
+%META:PREFERENCE{name="TOPICTITLE" title="TOPICTITLE" type="Set" value="Resubmission"}%
 

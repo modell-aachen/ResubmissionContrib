@@ -28,3 +28,6 @@ msgstr "Folgende Seiten sollten im Bereich %1 auf Aktualität geprüft werden"
 
 msgid "Since"
 msgstr "Seit"
+
+msgid "Resubmission"
+msgstr "Aktualitätsprüfung"
