@@ -22,9 +22,9 @@ format="(workflowmeta_lasttime_$1_dt:[NOW-$percntWEBPREF{\"RESUBMISSION_$percntC
 %{"Set the sender:"}%
 %TMPL:DEF{"ModacMailFrom"}%%TMPL:P{"ModacNoReply"}%%TMPL:END%
 
-%TMPL:DEF{"ModacMailSubject"}%%MAKETEXT{"[_1] Resubmission: Check pages for up-to-dateness" arg1="[%TMPL:P{"QWIKITOOL"}%]"}%%TMPL:END%
+%TMPL:DEF{"ModacMailSubject"}%%MAKETEXT{"[_1] Resubmission: Check pages for up-to-dateness" arg1="[%WIKITOOLNAME%]"}%%TMPL:END%
 
-%TMPL:DEF{"ModacMailTo"}%%FORMATLIST{"%RESUBMISSION_WEBS%" format="%IF{"'%WEBPREF{"RESUBMISSION_SENDMAIL" web="$1" alt="%RESUBMISSION_SENDMAIL%"}%'='1'" then="%WEBPREF{"RESUBMISSION_SENDMAIL_GROUP" web="$1" alt="%RESUBMISSION_SENDMAIL_GROUP%"}%"}%"}%%TMPL:END%
+%TMPL:DEF{"ModacMailTo"}%%FORMATLIST{"%RESUBMISSION_WEBS%" format="$percntIF{\"'$percntWEBPREF{\"RESUBMISSION_SENDMAIL\" web=\"$1\" alt=\"$percntRESUBMISSION_SENDMAIL$percnt\"}$percnt'='1'\" then=\"$percntWEBPREF{\"RESUBMISSION_SENDMAIL_GROUP\" web=\"$1\" alt=\"$percntRESUBMISSION_SENDMAIL_GROUP$percnt\"}$percnt\"}$percnt"}%%TMPL:END%
 
 
 %{"Body of the mail:"}%
