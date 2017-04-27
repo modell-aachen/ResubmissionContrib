@@ -41,7 +41,7 @@ format="(workflowmeta_lasttime_$1_dt:[NOW-$percntWEBPREF{\"RESUBMISSION_$percntC
 %TMPL:END%
 
 %TMPL:DEF{"webList"}%%{
-}%%SOLRFORMAT{"%web%%ModacMailCount%" format="   * [$percntWORKFLOWMETA{\"displayname\" web=\"$web\" topic=\"$topic\"}$percnt] $title %SCRIPTURL%$url (%MAKETEXT{"Responsible"}%: $percntRENDERUSER{\"$field_Responsible_s\" convert=\"on\"}$percnt)$n"}%%{
+}%%SOLRFORMAT{"%web%%ModacMailCount%" format="   * [$percntWORKFLOWMETA{\"displayname\" web=\"$web\" topic=\"$topic\"}$percnt] $title %SCRIPTURL%$url (%MAKETEXT{"Responsible"}%: $percntRENDERUSER{\"$field_Responsible_s\" convert=\"on\"}$percnt)$n" footer="$n"}%%{
 }%%TMPL:END%
 
 %TMPL:DEF{"ModacMailCharset"}%charset="utf-8";%TMPL:END%
