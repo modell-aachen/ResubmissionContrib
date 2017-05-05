@@ -1,0 +1,27 @@
+%META:TOPICPARENT{name="WebHome"}%
+%TMPL:INCLUDE{"HeadingView"}%
+
+%TMPL:DEF{"content"}%
+%SEARCHGRID{"(%FORMATLIST{"%RESUBMISSION_WEBS%" format="(web:$1 AND ($percntTMPL:P{\"stateQuery\" web=\"$1\"}$percnt) AND -topic:($percntWEBPREF{\"RESUBMISSION_IGNORE\" web=\"$1\" alt=\"$percntRESUBMISSION_IGNORE$percnt\"}$percnt))" separator=" OR "}%) type:topic"
+   headers="Titel,Responsible,Status,Since"
+   fields="url-field(title, url),text-field(field_Responsible_s_dv),text-field(workflowstate_displayname%IF{"$LANGUAGE='de'" then="de"}%_s),date-field(workflowmeta_lasttime_currentstate_dt,1)"
+   sortFields="title_sort,field_Responsible_s,workflowstate_displayname%IF{"$LANGUAGE='de'" then="de"}%_s,workflowmeta_lasttime_currentstate_dt"
+   facets="select-2-facet(Responsible,field_Responsible_s),multi-select-facet(Status,workflowstate_displayname%IF{"$LANGUAGE='de'" then="de"}%_s),multi-select-facet(Webs, web)"
+   initialSort="workflowmeta_lasttime_currentstate_dt,asc"
+   form="Processes.DocumentForm"
+}%
+%TMPL:END%
+
+%TMPL:DEF{"stateQuery"}%%{
+}%%FORMATLIST{"%WEBPREF{"RESUBMISSION_STATES" web="%web%" alt="%RESUBMISSION_STATES%"}%"
+separator=" OR "
+expandVariables="1"
+format="(workflowmeta_lasttime_$1_dt:[* TO NOW-$percntWEBPREF{\"RESUBMISSION_$percntCALC{\"$dollarUPPER($1)\"}$percnt\" web=\"%web%\" alt=\"$percntRESUBMISSION_$percntCALC{\"$dollarUPPER($1)\"}$percnt$percnt\"}$percntDAY/DAY] AND workflowstate_statetype_s:$1)"}$percnt)"}%%{
+}%%TMPL:END%
+
+%META:PREFERENCE{name="ALLOWTOPICCHANGE" title="ALLOWTOPICCHANGE" type="Set" value="AdminGroup"}%
+%META:PREFERENCE{name="ALLOWTOPICRENAME" title="ALLOWTOPICRENAME" type="Set" value="AdminGroup"}%
+%META:PREFERENCE{name="NOWYSIWYG" title="NOWYSIWYG" type="Local" value="1"}%
+%META:PREFERENCE{name="WORKFLOW" title="WORKFLOW" type="Local" value=""}%
+%META:PREFERENCE{name="NO_MODAC_HEAD" title="NO_MODAC_HEAD" type="Set" value="1"}%
+%META:PREFERENCE{name="VIEW_TEMPLATE" title="VIEW_TEMPLATE" type="Set" value="HeadingView"}%

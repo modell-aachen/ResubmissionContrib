@@ -1,0 +1,33 @@
+# ResubmissionContrib translation for German
+# Translators:
+# ModellAachen
+msgid ""
+msgstr ""
+"Project-Id-Version: ResubmissionContrib $Id\n"
+"Report-Msgid-Bugs-To: support@modell-aachen.de\n"
+"POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2017-03-23 15:35+0200\n"
+"Last-Translator: Modell Aachen <support@modell-aachen.de>\n"
+"Language-Team: German <http://translate.modell-aachen.de/projects/"
+"resubmissioncontrib/release/riga/de/>\n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 1.9\n"
+
+msgid "An overview of all resubmissions can be found here"
+msgstr "Eine Übersicht aller Wiedervorlagen finden Sie hier"
+
+msgid "%1 Resubmission: Check pages for up-to-dateness"
+msgstr "%1 Wiedervorlage: Seiten auf Aktualität prüfen"
+
+msgid "The following pages should be examined in the web of %1 for up-to-dateness"
+msgstr "Folgende Seiten sollten im Bereich %1 auf Aktualität geprüft werden"
+
+msgid "Since"
+msgstr "Seit"
+
+msgid "Resubmission"
+msgstr "Aktualitätsprüfung"

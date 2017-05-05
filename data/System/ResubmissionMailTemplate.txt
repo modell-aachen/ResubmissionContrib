@@ -1,0 +1,56 @@
+%TMPL:INCLUDE{"mailtemplatescontrib"}%
+
+%TMPL:DEF{"ModacMailPrimer"}%
+%SOLRSEARCH{"(%FORMATLIST{"%RESUBMISSION_WEBS%" format="(web:$1 AND ($percntTMPL:P{\"stateQuery\" web=\"$1\"}$percnt) AND -topic:($percntWEBPREF{\"RESUBMISSION_IGNORE\" web=\"$1\" alt=\"$percntRESUBMISSION_IGNORE$percnt\"}$percnt))" separator=" OR " exclude="%FORMATLIST{"%RESUBMISSION_WEBS%" format="$percntIF{\"'$percntWEBPREF{\"RESUBMISSION_SENDMAIL\" web=\"$1\" alt=\"$percntRESUBMISSION_SENDMAIL$percnt\"}$percnt'='0'\" then=\"$1\"}$percnt"}%"}%) type:topic"
+rows="1"
+id="who"
+facets="field_Responsible_s"
+facetlimit="9999"}%
+%TMPL:END%
+
+%TMPL:DEF{"stateQuery"}%%{
+}%%FORMATLIST{"%WEBPREF{"RESUBMISSION_STATES" web="%web%" alt="%RESUBMISSION_STATES%"}%"
+separator=" OR "
+expandVariables="1"
+format="(workflowmeta_lasttime_$1_dt:[NOW-$percntWEBPREF{\"RESUBMISSION_$percntCALC{\"$dollarUPPER($1)\"}$percnt\" web=\"%web%\" alt=\"$percntRESUBMISSION_$percntCALC{\"$dollarUPPER($1)\"}$percnt$percnt\"}$percntDAY-1DAY/DAY TO NOW-$percntWEBPREF{\"RESUBMISSION_$percntCALC{\"$dollarUPPER($1)\"}$percnt\" web=\"%web%\" alt=\"$percntRESUBMISSION_$percntCALC{\"$dollarUPPER($1)\"}$percnt$percnt\"}$percntDAY/DAY] AND workflowstate_statetype_s:$1)"}%%{
+}%%TMPL:END%
+
+%TMPL:DEF{"ModacMailEachPrimer"}%
+   %FORMATLIST{"%RESUBMISSION_WEBS%" format="$percntTMPL:P{\"SearchByWeb\" web=\"$1\"}$percnt" separator=" "}%
+%TMPL:END%
+
+%TMPL:DEF{"SearchByWeb"}%%{
+}%%SOLRSEARCH{"type:topic field_Responsible_s:%RENDERUSER{"%to_WikiName%" format="$cUID" convert="on"}% web:%web% workflowstate_statetype_s:* -topic:(%WEBPREF{"RESUBMISSION_IGNORE" web="%web%" alt="$percntRESUBMISSION_IGNORE$percnt"}%) (%TMPL:P{"stateQuery" web="%web%"}%)"
+   id="%web%%ModacMailCount%"
+   sort="workflowstate_statetype_s asc"
+   rows="9999"
+   fields="topic,webtopic,web,title,url,workflowmeta_lasttime_currentstate_s"}%%{
+}%%TMPL:END%
+
+%{"Set the sender:"}%
+%TMPL:DEF{"ModacMailFrom"}%%TMPL:P{"ModacNoReply"}%%TMPL:END%
+
+%TMPL:DEF{"ModacMailSubject"}%%MAKETEXT{"[_1] Resubmission: Check pages for up-to-dateness" arg1="[%WIKITOOLNAME%]"}%%TMPL:END%
+
+%TMPL:DEF{"ModacMailTo"}%%SOLRFORMAT{"who" format_field_Responsible_s="$key" separator_field_Responsible_s=","}%%TMPL:END%
+
+%{"Body of the mail:"}%
+%TMPL:DEF{"ModacMailContents"}%
+%FORMATLIST{"%RESUBMISSION_WEBS%" format="$percntIF{\"'$percntWEBPREF{\"RESUBMISSION_SENDMAIL\" web=\"$1\" alt=\"$percntRESUBMISSION_SENDMAIL$percnt\"}$percnt'='1' AND $percntSOLRFORMAT{\"$1$percntModacMailCount$percnt\" format=\"$count\" row=\"1\"}$percnt0>0\" then=\"$dollarpercntMAKETEXT{\\"The following pages should be examined in the web of [_1] for up-to-dateness\\" arg1=\\"$1\\"}$dollarpercnt:$n$dollarpercntTMPL:P{\\"webList\\" web=\\"$1\\"}$dollarpercnt\"}$percnt" separator=""}%
+
+%MAKETEXT{"An overview of all resubmissions can be found here"}%:
+%SCRIPTURL{"view"}%/%USERSWEB%/Resubmission
+
+%MAKETEXT{"This is an automatically generated message. Please do not reply to this email."}%
+
+%MAKETEXT{"For questions, please refer to:"}%
+%WIKIWEBMASTERNAME%
+%TMPL:END%
+
+%TMPL:DEF{"webList"}%%{
+}%%SOLRFORMAT{"%web%%ModacMailCount%" format="   * [$percntWORKFLOWMETA{\"displayname\" web=\"$web\" topic=\"$topic\"}$percnt] $title %SCRIPTURL%$url$n" footer="$n"}%%{
+}%%TMPL:END%
+
+%TMPL:DEF{"ModacMailCharset"}%charset="utf-8";%TMPL:END%
+
+%TMPL:DEF{"ModacMailType"}%text/plain%TMPL:END%

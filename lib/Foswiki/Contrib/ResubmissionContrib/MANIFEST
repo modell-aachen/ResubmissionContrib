@@ -1,0 +1,8 @@
+data/System/ResubmissionContrib.txt  Documentation topic
+data/System/ResubmissionMailTemplate.txt 0644
+data/System/ResubmissionGroupMailTemplate.txt 0644
+data/System/ResubmissionViewTemplate.txt 0644
+data/_apps/Resubmission/Resubmission.txt 0644
+lib/Foswiki/Contrib/ResubmissionContrib.pm 0644
+lib/Foswiki/Contrib/ResubmissionContrib/Config.spec 0777
+locale/ResubmissionContrib/de.po 0644
