@@ -8,7 +8,7 @@
    sortFields="title_sort,field_Responsible_s,workflowstate_displayname%IF{"$LANGUAGE='de'" then="de"}%_s,workflowmeta_lasttime_currentstate_dt"
    facets="multi-select-facet(Status,workflowstate_displayname%IF{"$LANGUAGE='de'" then="de"}%_s),multi-select-facet(Webs, web)"
    initialSort="workflowmeta_lasttime_currentstate_dt,asc"
-   form="Processes.DocumentForm"
+   %IF{"istopic 'Settings.WebHome'" then="" else="form=\"Processes.DocumentForm\""}%
 }%
 %TMPL:END%
 
