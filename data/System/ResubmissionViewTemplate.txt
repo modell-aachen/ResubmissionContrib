@@ -6,7 +6,7 @@
    headers="Titel,Responsible,Status,Since"
    fields="url-field(title, url),text-field(field_Responsible_s_dv),text-field(workflowstate_displayname%IF{"$LANGUAGE='de'" then="de"}%_s),date-field(workflowmeta_lasttime_currentstate_dt,1)"
    sortFields="title_sort,field_Responsible_s,workflowstate_displayname%IF{"$LANGUAGE='de'" then="de"}%_s,workflowmeta_lasttime_currentstate_dt"
-   facets="multi-select-facet(Status,workflowstate_displayname%IF{"$LANGUAGE='de'" then="de"}%_s),multi-select-facet(Webs, web)"
+   facets="select-2-facet(Responsible,field_Responsible_s),multi-select-facet(Status,workflowstate_displayname%IF{"$LANGUAGE='de'" then="de"}%_s),multi-select-facet(Webs, web)"
    initialSort="workflowmeta_lasttime_currentstate_dt,asc"
    %IF{"istopic 'Settings.WebHome'" then="" else="form=\"Processes.DocumentForm\""}%
 }%
