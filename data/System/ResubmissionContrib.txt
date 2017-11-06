@@ -23,8 +23,8 @@ If WebPref is 1, then the WebPreferences will be considered first. Only when the
 ---++ Installation Instructions
 Add Cronjob, e.g.:
 <pre>
-20 6 * * * cd /var/www/qwiki/tools; perl mailtemplate_send template=ResubmissionMail      >/dev/null 2>&1
-30 6 * * * cd /var/www/qwiki/tools; perl mailtemplate_send template=ResubmissionGroupMail >/dev/null 2>&1
+20 6 * * * cd /var/www/qwikis/qwiki/tools; perl mailtemplate_send template=ResubmissionMail      >/dev/null 2>&1
+30 6 * * * cd /var/www/qwikis/qwiki/tools; perl mailtemplate_send template=ResubmissionGroupMail >/dev/null 2>&1
 </pre>
 ---++ Contrib Info
 |  Author: | Daniel Supplieth - Modell-Aachen GmbH|

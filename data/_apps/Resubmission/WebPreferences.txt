@@ -1,0 +1,51 @@
+%META:TOPICINFO{author="3abfa98b-f92b-42ab-986e-872abca52a49" comment="" date="1506077358" format="1.1" reprev="9" version="11"}%
+---+!! <nop>%WEB% Web Preferences
+
+%TOC%
+
+just a dummy WebPreference
+
+---++ Appearance
+
+   * Set WEBBGCOLOR = #efefef
+      * <sticky>web-specific background color, <span style='background-color: %WEBBGCOLOR%'> current color </span></sticky>
+
+   * Set SITEMAPLIST = on
+      * set to =off= to hide this web from the [[%SYSTEMWEB%.SiteMap][SiteMap]]
+
+   * Set WEBSUMMARY = 
+      * description what this web is used for
+
+   * Set NOSEARCHALL = off
+      * if set to =on=, this web will be exclude web from a global search
+
+   * Set NO_MODAC_HEAD = 1
+
+---++ Wiki application settings
+
+   * WebTopicEditTemplate
+      * default template for new topics in this web, if this topic does not exist, [[%SYSTEMWEB%.WebTopicEditTemplate][site-level default template]] will be used
+
+   * Set WEBFORMS = 
+      * Comma separated list of forms that can be attached to topics in this web. See [[%SYSTEMWEB%.DataForms][DataForms]] for more information.
+
+---++ Access control
+
+Users or groups who are allowed to view, change and rename topics in the <nop>%WEB% web.Remember that an empty setting is a valid setting; setting DENYWEBVIEW to nothing means that anyone can view the web.
+
+   * Set DENYWEBVIEW = WikiGuest
+   * Set ALLOWWEBVIEW = 
+   * Set DENYWEBCHANGE = WikiGuest
+   * Set ALLOWWEBCHANGE = 
+   * Set DENYWEBRENAME = 
+   * Set ALLOWWEBRENAME = KeyUserGroup
+
+Users or groups allowed to change or rename this <nop>%TOPIC% topic: (e.g., [[%USERSWEB%.AdminGroup][AdminGroup]])
+
+   * Set ALLOWTOPICCHANGE = AdminGroup
+   * Set ALLOWTOPICRENAME = AdminGroup
+
+---
+
+%INCLUDE{"%SYSTEMWEB%.WebPreferencesHelp"}%
+
