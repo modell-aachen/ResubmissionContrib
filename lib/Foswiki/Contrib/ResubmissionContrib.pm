@@ -28,9 +28,7 @@ sub maintenanceHandler {
         name => "Resubmission topic is missing",
         description => "Topic with all Topics for Resubmission is missing",
         check => sub {
-            require File::Spec;
-            my $file = File::Spec->catfile('data', 'Main', 'Resubmission.txt');
-            if(!-e $file) {
+            unless(Foswiki::Func::topicExists($Foswiki::cfg{UsersWebName}, 'Resubmission')) {
                 return {
                     result => 1,
                     priority => $Foswiki::Plugins::MaintenancePlugin::ERROR,
@@ -48,10 +46,10 @@ sub maintenanceHandler {
             my $file = File::Spec->catfile('/', 'etc', 'cron.d', 'foswiki_jobs');
             if( -e $file) {
                 open(my $fh, '<', $file);
-                local $/;
-                my $result = $fh !~ /ResubmissionMail/;
+                local $/ = undef;
+                my $hasResubmissionMail = <$fh> =~ /\bResubmissionMail\b/;
                 close $fh;
-                if($result) {
+                unless($hasResubmissionMail) {
                     return {
                         result => 1,
                         priority => $Foswiki::Plugins::MaintenancePlugin::ERROR,
