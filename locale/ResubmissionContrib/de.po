@@ -31,3 +31,9 @@ msgstr "Seit"
 
 msgid "Resubmission"
 msgstr "Aktualitätsprüfung"
+
+msgid "In state since"
+msgstr "Status seit"
+
+msgid "In resubmission since"
+msgstr "In Wiedervorlage seit"
