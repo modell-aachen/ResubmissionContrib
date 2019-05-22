@@ -6,13 +6,15 @@
 %{<verbatim>}%
 %TMPL:DEF{"content"}%
 %SEARCHGRID{"(%FORMATLIST{"%RESUBMISSION_WEBS%" format="(web:$1 AND ($percntTMPL:P{\"stateQuery\" web=\"$1\"}$percnt) AND -topic:($percntWEBPREF{\"RESUBMISSION_IGNORE\" web=\"$1\" alt=\"$percntRESUBMISSION_IGNORE$percnt\"}$percnt))" separator=" OR "}%) type:topic"
-   headers="Titel,Responsible,Status,In state since,In resubmission since"
-   fields="url-field(title, url),text-field(field_Responsible_dv_s),text-field(workflowstate_displayname%IF{"$LANGUAGE='de'" then="de"}%_s),date-field(workflowmeta_lasttime_currentstate_dt,1),date-field(workflowmeta_lasttimecurrentstatetype_dt,1)"
-   sortFields="title_sort,field_Responsible_dv_s,workflowstate_displayname%IF{"$LANGUAGE='de'" then="de"}%_s,workflowmeta_lasttime_currentstate_dt,workflowmeta_lasttimecurrentstatetype_dt"
-   facets="select-2-facet(Responsible,field_Responsible_dv_s),multi-select-facet(Status,workflowstate_displayname%IF{"$LANGUAGE='de'" then="de"}%_s),multi-select-facet(Webs, web)"
-   initialSort="workflowmeta_lasttime_currentstate_dt,asc"
-   fieldRestriction="field_Responsible_dv_s,workflowstate_displayname%IF{"$LANGUAGE='de'" then="de"}%_s,web,title,url,workflowmeta_lasttime_currentstate_dt,workflowmeta_lasttimecurrentstatetype_dt"
-   %IF{"istopic 'Settings.WebHome'" then="" else="form=\"Processes.DocumentForm\""}%
+   headers="%RESUBMISSION_HEADERS%"
+   fields="%RESUBMISSION_FIELDS%"
+   sortFields="%RESUBMISSION_SORTFIELDS%"
+   facets="%RESUBMISSION_FACETS%"
+   initialSort="%RESUBMISSION_INITIALSORT%"
+   fieldRestriction="%RESUBMISSION_FIELDRESTRICTION%"
+   %RESUBMISSION_SETTINGS_WEBHOME%
+   enableExcelExport="%RESUBMISSION_EXCELEXPORT%"
+   filters="%RESUBMISSION_FILTERS%"
 }%
 %TMPL:END%
 %{</verbatim>}%
