@@ -7,12 +7,12 @@
 %TMPL:DEF{"content"}%
 %SEARCHGRID{"(%FORMATLIST{"%RESUBMISSION_WEBS%" format="(web:$1 AND ($percntTMPL:P{\"stateQuery\" web=\"$1\"}$percnt) AND -topic:($percntWEBPREF{\"RESUBMISSION_IGNORE\" web=\"$1\" alt=\"$percntRESUBMISSION_IGNORE$percnt\"}$percnt))" separator=" OR "}%) type:topic"
    headers="%RESUBMISSION_HEADERS%"
-   fields="%RESUBMISSION_FIELDS%"
-   sortFields="%RESUBMISSION_SORTFIELDS%"
-   facets="%RESUBMISSION_FACETS%"
+   fields="%RESUBMISSION_FIELDS{encode="none"}%"
+   sortFields="%RESUBMISSION_SORTFIELDS{encode="none"}%"
+   facets="%RESUBMISSION_FACETS{encode="none"}%"
    initialSort="%RESUBMISSION_INITIALSORT%"
-   fieldRestriction="%RESUBMISSION_FIELDRESTRICTION%"
-   %RESUBMISSION_SETTINGS_WEBHOME%
+   fieldRestriction="%RESUBMISSION_FIELDRESTRICTION{encode="none"}%"
+   %RESUBMISSION_SETTINGS_WEBHOME{encode="none"}%
    enableExcelExport="%RESUBMISSION_EXCELEXPORT%"
    filters="%RESUBMISSION_FILTERS%"
 }%
