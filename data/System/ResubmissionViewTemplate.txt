@@ -12,6 +12,8 @@
    facets="select-2-facet(Responsible,field_Responsible_dv_s),multi-select-facet(Status,workflowstate_displayname%IF{"$LANGUAGE='de'" then="de"}%_s),multi-select-facet(Webs, web)"
    initialSort="workflowmeta_lasttime_currentstate_dt,asc"
    fieldRestriction="field_Responsible_dv_s,workflowstate_displayname%IF{"$LANGUAGE='de'" then="de"}%_s,web,title,url,workflowmeta_lasttime_currentstate_dt,workflowmeta_lasttimecurrentstatetype_dt"
+   enableExcelExport="%RESUBMISSION_EXCEL_EXPORT%"
+   filters="full-text-filter(Title,title_search)
    %IF{"istopic 'Settings.WebHome'" then="" else="form=\"Processes.DocumentForm\""}%
 }%
 %TMPL:END%
