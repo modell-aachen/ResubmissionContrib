@@ -63,7 +63,7 @@ Note: Leading 0 makes sure this is a number.
 
 %TMPL:DEF{"webListApprovedPages"}%%{
 }%%SOLRFORMAT{"%web%"
-  format="$percentIF{\"'$percentWORKFLOWMETA{\"displayname\" web=\"$web\" topic=\"$topic\"}$percent' = 'Approved Page'\" then=\"$nApproved pages$n   * <link>$percentSCRIPTURL{view}$percent$url $title</link> ($percentRENDERUSER{\"$field_Responsible_s\" convert=\"on\"}$percnt) \"}$percent"
+  format="$percentIF{\"'$percentWORKFLOWMETA{\"displayname\" web=\"$web\" topic=\"$topic\"}$percent' = 'Approved'\" then=\"$nApproved pages$n   * $title ($percentSCRIPTURL$percent$url) ($percentRENDERUSER{\"$field_Responsible_s\" convert=\"on\"}$percnt) \"}$percent"
   footer="$n"
   separator="$n"
 }%%{
@@ -71,7 +71,7 @@ Note: Leading 0 makes sure this is a number.
 
 %TMPL:DEF{"webListDiscussions"}%%{
 }%%SOLRFORMAT{"%web%"
-  format="$percentIF{\"'$percentWORKFLOWMETA{\"displayname\" web=\"$web\" topic=\"$topic\"}$percent' = 'Draft'\" then=\"$nDiscussions$n   * [[\\"$percentSCRIPTURL$percent$url\\"][\\"$title\\"]] ($percentRENDERUSER{\"$field_Responsible_s\" convert=\"on\"}$percnt)  \"}$percent"
+  format="$percentIF{\"'$percentWORKFLOWMETA{\"displayname\" web=\"$web\" topic=\"$topic\"}$percent' = 'Discussion'\" then=\"$nDiscussions$n   * $title ($percentSCRIPTURL$percent$url) ($percentRENDERUSER{\"$field_Responsible_s\" convert=\"on\"}$percnt)  \"}$percent"
   footer="$n"
   separator="$n"
 }%%{
@@ -79,8 +79,7 @@ Note: Leading 0 makes sure this is a number.
 
 %TMPL:DEF{"webListDrafts"}%%{
 }%%SOLRFORMAT{"%web%"
-  format="$percentIF{\"'$percentWORKFLOWMETA{\"displayname\" web=\"$web\" topic=\"$topic\"}$percent' = 'Draft'\" then=\"$nDrafts$n   *  $title($percentSCRIPTURL$percent$url) ($percentRENDERUSER{\"$field_Responsible_s\" convert=\"on\"}$percnt) \"}$percent"
-  
+  format="$percentIF{\"'$percentWORKFLOWMETA{\"displayname\" web=\"$web\" topic=\"$topic\"}$percent' = 'Draft'\" then=\"$nDrafts$n   * $title ($percentSCRIPTURL$percent$url) ($percentRENDERUSER{\"$field_Responsible_s\" convert=\"on\"}$percnt) \"}$percent"
   footer="$n"
   separator="$n"
 }%%{

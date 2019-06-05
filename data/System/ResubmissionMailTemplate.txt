@@ -37,7 +37,7 @@ format="(workflowmeta_lasttime_$1_dt:[NOW-$percntWEBPREF{\"RESUBMISSION_$percntC
 %{"Body of the mail:"}%
 %TMPL:DEF{"ModacMailContents"}%
 %FORMATLIST{"%RESUBMISSION_WEBS%" format="$percntIF{\"'$percntWEBPREF{\"RESUBMISSION_SENDMAIL\" web=\"$1\" alt=\"$percntRESUBMISSION_SENDMAIL$percnt\"}$percnt'='1' AND $percntSOLRFORMAT{\"$1$percntModacMailCount$percnt\" format=\"$count\" row=\"1\"}$percnt0>0\" then=\"$dollarpercntMAKETEXT{\\"The following page(s) need(s) your attention:$n\\"}$dollarpercnt$n$dollarpercntTMPL:P{\\"webList\\" web=\\"$1\\"}$dollarpercnt\"}$percnt" separator=""}%
-%MAKETEXT{"Please check the status of the page(s) above. Confirm the up-to-dateness of approved pages by approving them again (start discussion & ask for approval & approve the content). If you do not need the content anymore please delete it or ask your local Q.wiki Key User to do so."}%:
+%MAKETEXT{"Please check the status of the page(s) above. Confirm the up-to-dateness of approved pages by approving them again (start discussion & ask for approval & approve the content). If you do not need the content anymore please delete it or ask your local Q.wiki Key User to do so."}%
 
 %MAKETEXT{"Defined time limits for resubmission:"}%
 
@@ -53,7 +53,7 @@ qwiki@acme.org
 %TMPL:END%
 
 %TMPL:DEF{"webList"}%%{
-}%%SOLRFORMAT{"%web%%ModacMailCount%" format="   * %SCRIPTURL%$url ($percntWORKFLOWMETA{\"displayname\" web=\"$web\" topic=\"$topic\"}$percnt)$n" footer="$n"}%%{
+}%%SOLRFORMAT{"%web%%ModacMailCount%" format="   * $title ($percentSCRIPTURL$percent$url) ($percntWORKFLOWMETA{\"displayname\" web=\"$web\" topic=\"$topic\"}$percnt)$n" footer="$n"}%%{
 }%%TMPL:END%
 
 %TMPL:DEF{"ModacMailCharset"}%charset="utf-8";%TMPL:END%
