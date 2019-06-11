@@ -30,7 +30,7 @@ format="(workflowmeta_lasttime_$1_dt:[NOW-$percntWEBPREF{\"RESUBMISSION_$percntC
 %{"Set the sender:"}%
 %TMPL:DEF{"ModacMailFrom"}%%TMPL:P{"ModacNoReply"}%%TMPL:END%
 
-%TMPL:DEF{"ModacMailSubject"}%%MAKETEXT{"[_1]: Please check for up-to-dateness" arg1="[%WIKITOOLNAME%]"}%%TMPL:END%
+%TMPL:DEF{"ModacMailSubject"}%%MAKETEXT{"[_1]: Please check for up-to-dateness" arg1="%WIKITOOLNAME%"}%%TMPL:END%
 
 %TMPL:DEF{"ModacMailTo"}%%SOLRFORMAT{"who" format_field_Responsible_s="$key" separator_field_Responsible_s=","}%%TMPL:END%
 
@@ -44,6 +44,8 @@ format="(workflowmeta_lasttime_$1_dt:[NOW-$percntWEBPREF{\"RESUBMISSION_$percntC
 %MAKETEXT{"Approved pages: [_1] days" arg1="%RESUBMISSION_APPROVED%"}%
 %MAKETEXT{"Discussions: [_1] days" arg1="%RESUBMISSION_DISCUSSION%"}%
 %MAKETEXT{"Darfts: [_1] days" arg1="%RESUBMISSION_DRAFT%"}%
+
+%MAKETEXT{"%IF{"'%RESUBMISSION_INFOPAGE%' != ''" then="%RESUBMISSION_INFOPAGE% %SCRIPTURL%/%RESUBMISSION_INFOPAGE%"}%"}%
 
 %MAKETEXT{"This is an automatically generated message. Please do not reply to this email."}%
 

@@ -19,7 +19,7 @@ If WebPref is 1, then the WebPreferences will be considered first. Only when the
  | =RESUBMISSION_SENDMAIL= | 0 | 0/1 | This define if mails should be generated. | 1 |
  | =RESUBMISSION_SENDMAIL_GROUP= | KeyUserGroup | Comma separated list of Groups | List of Groups which should recive a mail. Needs SENDMAIL set to 1 | 1 |
  | =RESUBMISSION_SENDMAIL_RESPONSIBLE= | 1 | 0/1 | Defines if the page responsible should receive a mail, needs SENDMAIL set to 1. | 1 |
- | =RESUBMISSION_INFOPAGE= |  | InfoPagename | Defines the InfoPage location E.g OU.Processes.InfoPageResubmission  | 1 |
+ | =RESUBMISSION_INFOPAGE= |  | InfoPage Name | Defines the InfoPage location E.g OU.Processes.InfoPageResubmission  | 1 |
 
 ---++ Installation Instructions
 Add Cronjob, e.g.:
@@ -33,6 +33,6 @@ Add Cronjob, e.g.:
 |  Release: | %$RELEASE% |
 |  Version: | %$VERSION% |
 |  Change History: | |
-|  30 Mar 2017 | Initial version |
+|  11 Jun 2019 | Initial version |
 |  Dependencies: | %$DEPENDENCIES% |
 

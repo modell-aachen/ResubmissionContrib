@@ -11,7 +11,7 @@ our $SHORTDESCRIPTION =
   'This Contrib provides a resubmission for abandoned topcis.';
 
 our $SITEPREFS = {
-    RESUBMISSION_WEBS => 'Processes',
+    RESUBMISSION_WEBS => '*Processes -OUTemplate.Processes -Settings.Processes ',
     RESUBMISSION_STATES => 'approved,discussion,draft',
     RESUBMISSION_APPROVED => '365',
     RESUBMISSION_DISCUSSION => '180',
