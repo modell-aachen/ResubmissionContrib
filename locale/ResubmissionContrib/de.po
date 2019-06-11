@@ -23,6 +23,12 @@ msgstr "Eine Übersicht aller Wiedervorlagen finden Sie hier"
 msgid "%1 Resubmission: Check pages for up-to-dateness"
 msgstr "%1 Wiedervorlage: Seiten auf Aktualität prüfen"
 
+msgid "Document Number"
+msgstr "Dokumenten Nummer"
+
+msgid "This is an automatically generated message. Please do not reply to this email."
+msgstr "Dies ist eine automatisch erstellte E-Mail. Bitte antworten Sie nicht auf diese."
+
 msgid "The following pages should be examined in the web of %1 for up-to-dateness"
 msgstr "Folgende Seiten sollten im Bereich %1 auf Aktualität geprüft werden"
 
