@@ -33,6 +33,6 @@ Add Cronjob, e.g.:
 |  Release: | %$RELEASE% |
 |  Version: | %$VERSION% |
 |  Change History: | |
-|  11 Jun 2019 | Initial version |
+|  30 Mar 2017 | Initial version |
 |  Dependencies: | %$DEPENDENCIES% |
 

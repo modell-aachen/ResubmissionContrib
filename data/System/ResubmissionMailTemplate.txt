@@ -43,15 +43,15 @@ format="(workflowmeta_lasttime_$1_dt:[NOW-$percntWEBPREF{\"RESUBMISSION_$percntC
 
 %MAKETEXT{"Approved pages: [_1] days" arg1="%RESUBMISSION_APPROVED%"}%
 %MAKETEXT{"Discussions: [_1] days" arg1="%RESUBMISSION_DISCUSSION%"}%
-%MAKETEXT{"Darfts: [_1] days" arg1="%RESUBMISSION_DRAFT%"}%
+%MAKETEXT{"Drafts: [_1] days" arg1="%RESUBMISSION_DRAFT%"}%
 
-%MAKETEXT{"%IF{"'%RESUBMISSION_INFOPAGE%' != ''" then="%RESUBMISSION_INFOPAGE% %SCRIPTURL%/%RESUBMISSION_INFOPAGE%"}%"}%
+%IF{"'%RESUBMISSION_INFOPAGE%' != ''" then="%MAKETEXT{"Learn more about resubmissions here: %SCRIPTURL%/%RESUBMISSION_INFOPAGE%"}%"}%
 
 %MAKETEXT{"This is an automatically generated message. Please do not reply to this email."}%
 
 %MAKETEXT{"For questions, please refer to:"}%
 
-qwiki@acme.org
+%WIKIWEBMASTER%
 %TMPL:END%
 
 %TMPL:DEF{"webList"}%%{

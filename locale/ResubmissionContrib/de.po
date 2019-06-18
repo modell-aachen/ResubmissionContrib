@@ -26,17 +26,20 @@ msgstr "Dies ist eine automatisch erstellte E-Mail. Bitte antworten Sie nicht au
 msgid "%1: Please check for up-to-dateness"
 msgstr "%1: Bitte prüfen Sie auf Aktualität"
 
-msgid "Support the responsible users with the care of their content. Use the page resubmission for controlling the realization."
-msgstr "Unterstützen Sie die Seitenverantwortlichen bei der Pflege der Inhalte. Kontrollieren sie die Umsetzung auf der Seite Aktualitätsprüfung."
+msgid "Support the responsible users with the care of their content. Use the page „Resubmission“ to check if the content has been reviewed."
+msgstr "Unterstützen Sie die Seitenverantwortlichen bei der Pflege der Inhalte. Auf der Seite „Aktualitätsprüfung“ können Sie kontrollieren, ob die Seite aktualisiert wurde.
 
-msgid "Please check the status of the page(s) above. Confirm the up-to-dateness of approved pages by approving them again (start discussion & ask for approval & approve the content). If you do not need the content anymore please delete it or ask your local Q.wiki Key User to do so."
-msgstr "Bitte prüfen Sie den Status der obigen Seite(n). Bestätigen Sie die Aktualität von freigegeben Seiten, indem Sie diese erneut freigeben (Diskussion starten & um Freigabe bitten & inhaltlich freigeben). Sollten Inhalte, egal welchen Status, nicht mehr benötigt werden, löschen Sie diese oder veranlassen Sie die Löschung durch Ihren Q.wiki Key User."
+msgid "Learn more about resubmissions here:"
+msgstr "Mehr zur Aktualitätsprüfung hier:"
+
+msgid "Please check the status of the page(s) above. Confirm the up-to-dateness of approved pages by approving them again (start discussion && ask for approval && approve the content). If you do not need the content anymore please delete it or ask your local Q.wiki Key User to do so."
+msgstr "Bitte prüfen Sie den Status der obigen Seite(n). Bestätigen Sie die Aktualität von freigegeben Seiten, indem Sie diese erneut freigeben (Diskussion starten && um Freigabe bitten && inhaltlich freigeben). Sollten Inhalte, egal welchen Status, nicht mehr benötigt werden, löschen Sie diese oder veranlassen Sie die Löschung durch Ihren Q.wiki Key User."
 
 msgid "Since"
 msgstr "Seit"
 
-msgid Responsible
-msgstr Verantwortlicher
+msgid "Responsible"
+msgstr "Verantwortlicher"
 
 msgid "Resubmission"
 msgstr "Aktualitätsprüfung"
