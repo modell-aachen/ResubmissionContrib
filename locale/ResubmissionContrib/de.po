@@ -53,13 +53,13 @@ msgstr "Status seit"
 msgid "In resubmission since"
 msgstr "In Wiedervorlage seit"
 
-msgid "Approved pages:"
+msgid "Approved page:"
 msgstr "Freigegebene Seiten:"
 
-msgid "Discussions:"
+msgid "Discussion:"
 msgstr "Diskussionen:"
 
-msgid "Drafts:"
+msgid "Draft:"
 msgstr "Entwürfe:"
 
 msgid "days"
