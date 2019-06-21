@@ -14,11 +14,12 @@ If WebPref is 1, then the WebPreferences will be considered first. Only when the
  | *Setting* | *Default* | *Value* | *Description* | *WebPref* |
  | =RESUBMISSION_WEBS= | Processes | comma separated list of Webs | Each web which should be taken into account. Works best with Processes Webs | 0 |
  | =RESUBMISSION_STATES= | approved,discussion,draft | comma separated list of Webs | Define Workflow state types which should be checked for resubmission. | 1 |
- | =RESUBMISSION_&lt;STATETYPE&gt;= | approved: 365 draft/discussion: 30  | int | Define the time till they show up in resubmissions. E.g. RESUBMISSION_APPROVED = 365 | 1 |
+ | =RESUBMISSION_&lt;STATETYPE&gt;= | approved: 365 draft/discussion: 180  | int | Define the time till they show up in resubmissions. E.g. RESUBMISSION_APPROVED = 365 | 1 |
  | =RESUBMISSION_IGNORE= | Web* AND *Template | solr query | This query can be used to define what will be excluded form search (also by web) | 1 |
  | =RESUBMISSION_SENDMAIL= | 0 | 0/1 | This define if mails should be generated. | 1 |
  | =RESUBMISSION_SENDMAIL_GROUP= | KeyUserGroup | Comma separated list of Groups | List of Groups which should recive a mail. Needs SENDMAIL set to 1 | 1 |
  | =RESUBMISSION_SENDMAIL_RESPONSIBLE= | 1 | 0/1 | Defines if the page responsible should receive a mail, needs SENDMAIL set to 1. | 1 |
+ | =RESUBMISSION_INFOPAGE= |  | InfoPage Name | Defines the InfoPage location E.g OU.Processes.InfoPageResubmission  | 1 |
 
 ---++ Installation Instructions
 Add Cronjob, e.g.:

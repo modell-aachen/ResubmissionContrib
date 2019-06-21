@@ -8,37 +8,57 @@ format="(workflowmeta_lasttime_$1_dt:[NOW-$percntWEBPREF{\"RESUBMISSION_$percntC
 }%%TMPL:END%
 
 %TMPL:DEF{"ModacMailPrimer"}%
-   %FORMATLIST{"%RESUBMISSION_WEBS%" format="$percentIF{\"'$percntWEBPREF{\"RESUBMISSION_SENDMAIL\" web=\"$1\" alt=\"$percntRESUBMISSION_SENDMAIL$percnt\"}$percnt'='1'\" then=\"$dollarpercntTMPL:P{\\"SearchByWeb\\" web=\\"$1\\"}$dollarpercnt\"}$percent" separator=" "}%
+  %FORMATLIST{"%RESUBMISSION_WEBS%" format="$percentIF{\"'$percntWEBPREF{\"RESUBMISSION_SENDMAIL\" web=\"$1\" alt=\"$percntRESUBMISSION_SENDMAIL$percnt\"}$percnt'='1'\" then=\"$dollarpercntTMPL:P{\\"SearchByWeb\\" web=\\"$1\\" statetype=\\"draft\\"}$dollarpercnt\"}$percent" separator=" "}%
+  %FORMATLIST{"%RESUBMISSION_WEBS%" format="$percentIF{\"'$percntWEBPREF{\"RESUBMISSION_SENDMAIL\" web=\"$1\" alt=\"$percntRESUBMISSION_SENDMAIL$percnt\"}$percnt'='1'\" then=\"$dollarpercntTMPL:P{\\"SearchByWeb\\" web=\\"$1\\" statetype=\\"discussion\\"}$dollarpercnt\"}$percent" separator=" "}%
+  %FORMATLIST{"%RESUBMISSION_WEBS%" format="$percentIF{\"'$percntWEBPREF{\"RESUBMISSION_SENDMAIL\" web=\"$1\" alt=\"$percntRESUBMISSION_SENDMAIL$percnt\"}$percnt'='1'\" then=\"$dollarpercntTMPL:P{\\"SearchByWeb\\" web=\\"$1\\" statetype=\\"approved\\"}$dollarpercnt\"}$percent" separator=" "}%
 %TMPL:END%
 
 %TMPL:DEF{"SearchByWeb"}%%{
-   }%%SOLRSEARCH{"type:topic web:%web% workflowstate_statetype_s:* -topic:(%WEBPREF{"RESUBMISSION_IGNORE" web="%web%" alt="$percntRESUBMISSION_IGNORE$percnt"}%) (%TMPL:P{"stateQuery" web="%web%"}%)"
-   id="%web%"
+   }%%SOLRSEARCH{"type:topic web:%web% workflowstate_statetype_s:%statetype% -topic:(%WEBPREF{"RESUBMISSION_IGNORE" web="%web%" alt="$percntRESUBMISSION_IGNORE$percnt"}%) (%TMPL:P{"stateQuery" web="%web%"}%)"
+   id="%web%_%statetype%"
    sort="workflowstate_statetype_s asc"
    rows="9999"
-   fields="topic,webtopic,web,title,url,workflowmeta_lasttime_currentstate_s,field_Responsible_s"}%%{
+   fields="topic,webtopic,web,title,url,workflowmeta_lasttime_currentstate_s,field_Responsible_s,workflowstate_displayname_s"}%%{
 }%%TMPL:END%
 
 %{"Set the sender:"}%
 %TMPL:DEF{"ModacMailFrom"}%%TMPL:P{"ModacNoReply"}%%TMPL:END%
 
-%TMPL:DEF{"ModacMailSubject"}%%MAKETEXT{"[_1] Resubmission: Check pages for up-to-dateness" arg1="[%WIKITOOLNAME%]"}%%TMPL:END%
+%TMPL:DEF{"ModacMailSubject"}%%MAKETEXT{"Keep your [_1]  up to date" arg1="%WIKITOOLNAME%"}%%TMPL:END%
 
-%TMPL:DEF{"ModacMailTo"}%%FORMATLIST{"%RESUBMISSION_WEBS%" format="$percentSOLRFORMAT{\"$1\" header=\"$percntWEBPREF{\"RESUBMISSION_SENDMAIL_GROUP\" web=\"$1\" alt=\"$percntRESUBMISSION_SENDMAIL_GROUP$percnt\"}$percnt\" format=\" \"}$percent"}%%TMPL:END%
+%TMPL:DEF{"ModacMailTo"}%%{
+  }%%FORMATLIST{"%RESUBMISSION_WEBS%" format="$percentSOLRFORMAT{\"$1_draft\" header=\"$percntWEBPREF{\"RESUBMISSION_SENDMAIL_GROUP\" web=\"$1\" alt=\"$percntRESUBMISSION_SENDMAIL_GROUP$percnt\"}$percnt\" format=\" \"}$percent"}%,%{
+  }%%FORMATLIST{"%RESUBMISSION_WEBS%" format="$percentSOLRFORMAT{\"$1_discussion\" header=\"$percntWEBPREF{\"RESUBMISSION_SENDMAIL_GROUP\" web=\"$1\" alt=\"$percntRESUBMISSION_SENDMAIL_GROUP$percnt\"}$percnt\" format=\" \"}$percent"}%,%{
+  }%%FORMATLIST{"%RESUBMISSION_WEBS%" format="$percentSOLRFORMAT{\"$1_approved\" header=\"$percntWEBPREF{\"RESUBMISSION_SENDMAIL_GROUP\" web=\"$1\" alt=\"$percntRESUBMISSION_SENDMAIL_GROUP$percnt\"}$percnt\" format=\" \"}$percent"}%%{
+}%%TMPL:END%
 
 %{"Body of the mail:"}%
 %TMPL:DEF{"ModacMailContents"}%%{
+}%
+%MAKETEXT{"The following page(s) need(s) your attention:"}%
+
+%FORMATLIST{"%RESUBMISSION_WEBS%"
+  format="$percentIF{\"$percentTMPL:P{\"isInSendMailGroup\" web=\"$1\"}$percent\" then=\"$dollarpercentTMPL:P{\\"webList\\" web=\\"$1\\" statetype=\\"draft\\"}$dollarpercent\"}$percent"
+  separator=""
+}%%{
 }%%FORMATLIST{"%RESUBMISSION_WEBS%"
-  format="$percentIF{\"$percentTMPL:P{\"isInSendMailGroup\" web=\"$1\"}$percent\" then=\"$dollarpercentTMPL:P{\\"webList\\" web=\\"$1\\"}$dollarpercent\"}$percent"
+  format="$percentIF{\"$percentTMPL:P{\"isInSendMailGroup\" web=\"$1\"}$percent\" then=\"$dollarpercentTMPL:P{\\"webList\\" web=\\"$1\\" statetype=\\"discussion\\"}$dollarpercent\"}$percent"
+  separator=""
+}%%{
+}%%FORMATLIST{"%RESUBMISSION_WEBS%"
+  format="$percentIF{\"$percentTMPL:P{\"isInSendMailGroup\" web=\"$1\"}$percent\" then=\"$dollarpercentTMPL:P{\\"webList\\" web=\\"$1\\" statetype=\\"approved\\"}$dollarpercent\"}$percent"
   separator=""
 }%
-%MAKETEXT{"An overview of all resubmissions can be found here"}%:
-%SCRIPTURL{"view"}%/%USERSWEB%/Resubmission
-
+%MAKETEXT{"Support the responsible users with the care of their content. Use the page „Resubmission“ to check if the content has been reviewed."}%
+%IF{"'%RESUBMISSION_INFOPAGE%' != ''" then="
+%MAKETEXT{"Learn more about resubmissions here: %SCRIPTURL%/%RESUBMISSION_INFOPAGE%"}%
+"}%
 %MAKETEXT{"This is an automatically generated message. Please do not reply to this email."}%
 
 %MAKETEXT{"For questions, please refer to:"}%
-%WIKIWEBMASTERNAME%
+
+support@modell-aachen.de
+
 %TMPL:END%
 
 %{
@@ -53,11 +73,15 @@ Note: Leading 0 makes sure this is a number.
 }%%TMPL:END%
 
 %TMPL:DEF{"webList"}%%{
-}%%SOLRFORMAT{"%web%"
-  header="$n%MAKETEXT{"The following pages should be examined in the web of [_1] for up-to-dateness" arg1="%web%"}%:$n"
-  format="   * [$percentWORKFLOWMETA{\"displayname\" web=\"$web\" topic=\"$topic\"}$percent] $title %SCRIPTURL%$url (%MAKETEXT{"Responsible"}%: $percentRENDERUSER{\"$field_Responsible_s\" convert=\"on\"}$percnt)"
-  footer="$n"
+}%%FORMATLIST{"%SOLRFORMAT{"%web%_%statetype%"
+  format="$workflowstate_displayname_s"
+  separator=","
+}%"
+unique="on"}%
+%SOLRFORMAT{"%web%_%statetype%"
+  format="   * $title ($percentSCRIPTURL$percent$url) (%MAKETEXT{"Responsible"}%: $percentRENDERUSER{\"$field_Responsible_s\" convert=\"on\"}$percnt)"
   separator="$n"
+  footer="$n"
 }%%{
 }%%TMPL:END%
 

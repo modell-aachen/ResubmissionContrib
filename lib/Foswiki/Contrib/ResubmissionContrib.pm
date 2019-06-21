@@ -11,13 +11,13 @@ our $SHORTDESCRIPTION =
   'This Contrib provides a resubmission for abandoned topcis.';
 
 our $SITEPREFS = {
-    RESUBMISSION_WEBS => 'Processes',
+    RESUBMISSION_WEBS => '*Processes -OUTemplate.Processes -Settings.Processes ',
     RESUBMISSION_STATES => 'approved,discussion,draft',
     RESUBMISSION_APPROVED => '365',
-    RESUBMISSION_DISCUSSION => '30',
-    RESUBMISSION_DRAFT => '30',
+    RESUBMISSION_DISCUSSION => '180',
+    RESUBMISSION_DRAFT => '180',
     RESUBMISSION_IGNORE => '*Template',
-    RESUBMISSION_SENDMAIL => '0',
+    RESUBMISSION_SENDMAIL => 1,
     RESUBMISSION_SENDMAIL_GROUP => 'KeyUserGroup',
     RESUBMISSION_SENDMAIL_RESPONSIBLE => 1,
     RESUBMISSION_HEADERS => '%IF{"$USE_PROCESS_DOCUMENT_NUMBER" then="Document Number,"}%Titel,Responsible,Status,In state since,In resubmission since',
@@ -29,6 +29,7 @@ our $SITEPREFS = {
     RESUBMISSION_SETTINGS_WEBHOME => '%IF{"istopic Settings.WebHome" then="" else="form=\"Processes.DocumentForm\""}%',
     RESUBMISSION_EXCELEXPORT => '1',
     RESUBMISSION_FILTERS => 'full-text-filter(Title,title_search)',
+    RESUBMISSION_INFOPAGE => '',
 };
 
 # MaintenancePlugin compatibility

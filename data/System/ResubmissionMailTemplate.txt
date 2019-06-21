@@ -30,25 +30,32 @@ format="(workflowmeta_lasttime_$1_dt:[NOW-$percntWEBPREF{\"RESUBMISSION_$percntC
 %{"Set the sender:"}%
 %TMPL:DEF{"ModacMailFrom"}%%TMPL:P{"ModacNoReply"}%%TMPL:END%
 
-%TMPL:DEF{"ModacMailSubject"}%%MAKETEXT{"[_1] Resubmission: Check pages for up-to-dateness" arg1="[%WIKITOOLNAME%]"}%%TMPL:END%
+%TMPL:DEF{"ModacMailSubject"}%%MAKETEXT{"[_1]: Please check for up-to-dateness" arg1="%WIKITOOLNAME%"}%%TMPL:END%
 
 %TMPL:DEF{"ModacMailTo"}%%SOLRFORMAT{"who" format_field_Responsible_s="$key" separator_field_Responsible_s=","}%%TMPL:END%
 
 %{"Body of the mail:"}%
 %TMPL:DEF{"ModacMailContents"}%
-%FORMATLIST{"%RESUBMISSION_WEBS%" format="$percntIF{\"'$percntWEBPREF{\"RESUBMISSION_SENDMAIL\" web=\"$1\" alt=\"$percntRESUBMISSION_SENDMAIL$percnt\"}$percnt'='1' AND $percntSOLRFORMAT{\"$1$percntModacMailCount$percnt\" format=\"$count\" row=\"1\"}$percnt0>0\" then=\"$dollarpercntMAKETEXT{\\"The following pages should be examined in the web of [_1] for up-to-dateness\\" arg1=\\"$1\\"}$dollarpercnt:$n$dollarpercntTMPL:P{\\"webList\\" web=\\"$1\\"}$dollarpercnt\"}$percnt" separator=""}%
+%FORMATLIST{"%RESUBMISSION_WEBS%" format="$percntIF{\"'$percntWEBPREF{\"RESUBMISSION_SENDMAIL\" web=\"$1\" alt=\"$percntRESUBMISSION_SENDMAIL$percnt\"}$percnt'='1' AND $percntSOLRFORMAT{\"$1$percntModacMailCount$percnt\" format=\"$count\" row=\"1\"}$percnt0>0\" then=\"$dollarpercntMAKETEXT{\\"The following page(s) need(s) your attention:$n\\"}$dollarpercnt$n$dollarpercntTMPL:P{\\"webList\\" web=\\"$1\\"}$dollarpercnt\"}$percnt" separator=""}%
+%MAKETEXT{"Please check the status of the page(s) above. Confirm the up-to-dateness of approved pages by approving them again (start discussion & ask for approval & approve the content). If you do not need the content anymore please delete it or ask your local Q.wiki Key User to do so."}%
 
-%MAKETEXT{"An overview of all resubmissions can be found here"}%:
-%SCRIPTURL{"view"}%/%USERSWEB%/Resubmission
+%MAKETEXT{"Defined time limits for resubmission:"}%
+
+%MAKETEXT{"Approved pages: [_1] days" arg1="%RESUBMISSION_APPROVED%"}%
+%MAKETEXT{"Discussions: [_1] days" arg1="%RESUBMISSION_DISCUSSION%"}%
+%MAKETEXT{"Drafts: [_1] days" arg1="%RESUBMISSION_DRAFT%"}%
+
+%IF{"'%RESUBMISSION_INFOPAGE%' != ''" then="%MAKETEXT{"Learn more about resubmissions here: %SCRIPTURL%/%RESUBMISSION_INFOPAGE%"}%"}%
 
 %MAKETEXT{"This is an automatically generated message. Please do not reply to this email."}%
 
 %MAKETEXT{"For questions, please refer to:"}%
-%WIKIWEBMASTERNAME%
+
+%WIKIWEBMASTER%
 %TMPL:END%
 
 %TMPL:DEF{"webList"}%%{
-}%%SOLRFORMAT{"%web%%ModacMailCount%" format="   * [$percntWORKFLOWMETA{\"displayname\" web=\"$web\" topic=\"$topic\"}$percnt] $title %SCRIPTURL%$url$n" footer="$n"}%%{
+}%%SOLRFORMAT{"%web%%ModacMailCount%" format="   * $title ($percentSCRIPTURL$percent$url) ($percntWORKFLOWMETA{\"displayname\" web=\"$web\" topic=\"$topic\"}$percnt)$n" footer="$n"}%%{
 }%%TMPL:END%
 
 %TMPL:DEF{"ModacMailCharset"}%charset="utf-8";%TMPL:END%
