@@ -68,8 +68,8 @@ msgstr "Entwürfe: %1 Tage"
 msgid "Approved page"
 msgstr "Freigegebene Seite"
 
-msgid "Discussion %1"
-msgstr "Diskussion %1"
+msgid "Discussion"
+msgstr "Diskussion"
 
 msgid "Draft"
 msgstr "Entwurf"

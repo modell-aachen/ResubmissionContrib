@@ -18,7 +18,7 @@ format="(workflowmeta_lasttime_$1_dt:[NOW-$percntWEBPREF{\"RESUBMISSION_$percntC
    id="%web%_%statetype%"
    sort="workflowstate_statetype_s asc"
    rows="9999"
-   fields="topic,webtopic,web,title,url,workflowmeta_lasttime_currentstate_s,field_Responsible_s,workflowstate_displayname_s"}%%{
+   fields="topic,webtopic,web,title,url,workflowmeta_lasttime_currentstate_s,field_Responsible_s,workflowstate_displayname_s,workflowstate_displaynamede_s"}%%{
 }%%TMPL:END%
 
 %{"Set the sender:"}%
@@ -72,9 +72,13 @@ Note: Leading 0 makes sure this is a number.
 }%%{
 }%%TMPL:END%
 
+%TMPL:DEF{"workflowstate_displayname"}%%{
+}%%IF{"$LANGUAGE='de'" then="$workflowstate_displaynamede_s" else="$workflowstate_displayname_s"}%%{
+}%%TMPL:END%
+
 %TMPL:DEF{"webList"}%%{
 }%%FORMATLIST{"%SOLRFORMAT{"%web%_%statetype%"
-  format="$percentMAKETEXT{$workflowstate_displayname_s}$percent"
+  format="%TMPL:P{"workflowstate_displayname"}%"
   separator=","
 }%"
 unique="on"}%
