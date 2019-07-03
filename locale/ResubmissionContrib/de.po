@@ -26,17 +26,20 @@ msgstr "Dies ist eine automatisch erstellte E-Mail. Bitte antworten Sie nicht au
 msgid "%1: Please check for up-to-dateness"
 msgstr "%1: Bitte prüfen Sie auf Aktualität"
 
-msgid "Support the responsible users with the care of their content. Use the page „Resubmission“ to check if the content has been reviewed."
-msgstr "Unterstützen Sie die Seitenverantwortlichen bei der Pflege der Inhalte. Auf der Seite „Aktualitätsprüfung“ können Sie kontrollieren, ob die Seite aktualisiert wurde.
+msgid "Support the responsible users with the care of their content. Use the Page "Resubmission" to check if the content has been reviewed."
+msgstr "Unterstützen Sie die Seitenverantwortlichen bei der Pflege der Inhalte. Auf der Seite Aktualitätsprüfung können Sie kontrollieren, ob die Seite aktualisiert wurde."
 
-msgid "Learn more about resubmissions here:"
-msgstr "Mehr zur Aktualitätsprüfung hier:"
+msgid "Learn more about resubmissions here: %1"
+msgstr "Mehr zur Aktualitätsprüfung hier: %1"
 
-msgid "Please check the status of the page(s) above. Confirm the up-to-dateness of approved pages by approving them again (start discussion && ask for approval && approve the content). If you do not need the content anymore please delete it or ask your local Q.wiki Key User to do so."
-msgstr "Bitte prüfen Sie den Status der obigen Seite(n). Bestätigen Sie die Aktualität von freigegeben Seiten, indem Sie diese erneut freigeben (Diskussion starten && um Freigabe bitten && inhaltlich freigeben). Sollten Inhalte, egal welchen Status, nicht mehr benötigt werden, löschen Sie diese oder veranlassen Sie die Löschung durch Ihren Q.wiki Key User."
+msgid "Please check the status of the page(s) above. Confirm the up-to-dateness of approved pages by approving them again (start discussion & ask for approval & approve the content)."
+msgstr "Bitte prüfen Sie den Status der obigen Seite(n). Bestätigen Sie die Aktualität von freigegeben Seiten, indem Sie diese erneut freigeben (Diskussion starten && um Freigabe bitten && inhaltlich freigeben)."
 
-msgid "Document Number"
-msgstr "Dokumenten Nummer"
+msgid "If you do not need the content anymore please delete it or ask your local Q.wiki Key User to do so."
+msgstr "Sollten Inhalte, egal welchen Status, nicht mehr benötigt werden, löschen Sie diese oder veranlassen Sie die Löschung durch Ihren Q.wiki Key User."
+
+msgid "Document number"
+msgstr "Dokumentennummer"
 
 msgid "Since"
 msgstr "Seit"
@@ -53,17 +56,23 @@ msgstr "Status seit"
 msgid "In resubmission since"
 msgstr "In Wiedervorlage seit"
 
-msgid "Approved page:"
-msgstr "Freigegebene Seiten:"
+msgid "Approved pages: %1 days"
+msgstr "Freigegebene Seiten: %1 Tage"
 
-msgid "Discussion:"
-msgstr "Diskussionen:"
+msgid "Discussions: %1 days"
+msgstr "Diskussionen: %1 Tage"
 
-msgid "Draft:"
-msgstr "Entwürfe:"
+msgid "Drafts: %1 days"
+msgstr "Entwürfe: %1 Tage"
 
-msgid "days"
-msgstr "Tage"
+msgid "Approved page"
+msgstr "Freigegebene Seite"
+
+msgid "Discussion %1"
+msgstr "Diskussion %1"
+
+msgid "Draft"
+msgstr "Entwurf"
 
 msgid "The following page(s) need(s) your attention:"
 msgstr "Die folgenden Seiten benötigen Ihre Aufmerksamkeit:"
