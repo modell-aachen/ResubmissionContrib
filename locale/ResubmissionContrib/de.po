@@ -35,7 +35,7 @@ msgstr "Mehr zur Aktualitätsprüfung hier:"
 msgid "Please check the status of the page(s) above. Confirm the up-to-dateness of approved pages by approving them again (start discussion && ask for approval && approve the content). If you do not need the content anymore please delete it or ask your local Q.wiki Key User to do so."
 msgstr "Bitte prüfen Sie den Status der obigen Seite(n). Bestätigen Sie die Aktualität von freigegeben Seiten, indem Sie diese erneut freigeben (Diskussion starten && um Freigabe bitten && inhaltlich freigeben). Sollten Inhalte, egal welchen Status, nicht mehr benötigt werden, löschen Sie diese oder veranlassen Sie die Löschung durch Ihren Q.wiki Key User."
 
-msgid "Document Number"
+msgid "Document number"
 msgstr "Dokumenten Nummer"
 
 msgid "Since"

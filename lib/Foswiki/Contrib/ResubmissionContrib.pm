@@ -20,7 +20,7 @@ our $SITEPREFS = {
     RESUBMISSION_SENDMAIL => 1,
     RESUBMISSION_SENDMAIL_GROUP => 'KeyUserGroup',
     RESUBMISSION_SENDMAIL_RESPONSIBLE => 1,
-    RESUBMISSION_HEADERS => '%IF{"$USE_PROCESS_DOCUMENT_NUMBER" then="Document Number,"}%Titel,Responsible,Status,In state since,In resubmission since',
+    RESUBMISSION_HEADERS => '%IF{"$USE_PROCESS_DOCUMENT_NUMBER" then="Document number,"}%Titel,Responsible,Status,In state since,In resubmission since',
     RESUBMISSION_FIELDS =>'%IF{"$USE_PROCESS_DOCUMENT_NUMBER" then="text-field(field_DocumentNumber_s),"}%url-field(title, url),text-field(field_Responsible_dv_s),text-field(workflowstate_displayname%IF{"$LANGUAGE=de" then=de}%_s),date-field(workflowmeta_lasttime_currentstate_dt,1),date-field(workflowmeta_lasttimecurrentstatetype_dt,1)',
     RESUBMISSION_SORTFIELDS => '%IF{"$USE_PROCESS_DOCUMENT_NUMBER" then="field_DocumentNumber_s,"}%title_sort,field_Responsible_dv_s,workflowstate_displayname%IF{"$LANGUAGE=de" then="de"}%_s,workflowmeta_lasttime_currentstate_dt,workflowmeta_lasttimecurrentstatetype_dt',
     RESUBMISSION_FACETS => 'select-2-facet(Responsible,field_Responsible_dv_s),multi-select-facet(Status,workflowstate_displayname%IF{"$LANGUAGE=de" then=de}%_s),multi-select-facet(Webs, web)',
