@@ -65,15 +65,6 @@ msgstr "Diskussionen: %1 Tage"
 msgid "Drafts: %1 days"
 msgstr "Entwürfe: %1 Tage"
 
-msgid "Approved page"
-msgstr "Freigegebene Seite"
-
-msgid "Discussion"
-msgstr "Diskussion"
-
-msgid "Draft"
-msgstr "Entwurf"
-
 msgid "The following page(s) need(s) your attention:"
 msgstr "Die folgenden Seiten benötigen Ihre Aufmerksamkeit:"
 
