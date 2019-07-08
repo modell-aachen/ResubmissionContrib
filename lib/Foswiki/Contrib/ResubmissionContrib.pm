@@ -11,15 +11,25 @@ our $SHORTDESCRIPTION =
   'This Contrib provides a resubmission for abandoned topcis.';
 
 our $SITEPREFS = {
-    RESUBMISSION_WEBS => 'Processes',
+    RESUBMISSION_WEBS => '*Processes -OUTemplate.Processes -Settings.Processes ',
     RESUBMISSION_STATES => 'approved,discussion,draft',
     RESUBMISSION_APPROVED => '365',
-    RESUBMISSION_DISCUSSION => '30',
-    RESUBMISSION_DRAFT => '30',
+    RESUBMISSION_DISCUSSION => '180',
+    RESUBMISSION_DRAFT => '180',
     RESUBMISSION_IGNORE => '*Template',
-    RESUBMISSION_SENDMAIL => '0',
+    RESUBMISSION_SENDMAIL => 1,
     RESUBMISSION_SENDMAIL_GROUP => 'KeyUserGroup',
-    RESUBMISSION_SENDMAIL_RESPONSIBLE => 1
+    RESUBMISSION_SENDMAIL_RESPONSIBLE => 1,
+    RESUBMISSION_HEADERS => '%IF{"$USE_PROCESS_DOCUMENT_NUMBER" then="Document number,"}%Titel,Responsible,Status,In state since,In resubmission since',
+    RESUBMISSION_FIELDS =>'%IF{"$USE_PROCESS_DOCUMENT_NUMBER" then="text-field(field_DocumentNumber_s),"}%url-field(title, url),text-field(field_Responsible_dv_s),text-field(workflowstate_displayname%IF{"$LANGUAGE=\'de\'" then="de"}%_s),date-field(workflowmeta_lasttime_currentstate_dt,1),date-field(workflowmeta_lasttimecurrentstatetype_dt,1)',
+    RESUBMISSION_SORTFIELDS => '%IF{"$USE_PROCESS_DOCUMENT_NUMBER" then="field_DocumentNumber_s,"}%title_sort,field_Responsible_dv_s,workflowstate_displayname%IF{"$LANGUAGE=\'de\'" then="de"}%_s,workflowmeta_lasttime_currentstate_dt,workflowmeta_lasttimecurrentstatetype_dt',
+    RESUBMISSION_FACETS => 'select-2-facet(Responsible,field_Responsible_dv_s),multi-select-facet(Status,workflowstate_displayname%IF{"$LANGUAGE=\'de\'" then="de"}%_s),multi-select-facet(Webs, web)',
+    RESUBMISSION_INITIALSORT => 'workflowmeta_lasttime_currentstate_dt,asc',
+    RESUBMISSION_FIELDRESTRICTION => '%IF{"$USE_PROCESS_DOCUMENT_NUMBER" then="field_DocumentNumber_s,"}%field_Responsible_dv_s,workflowstate_displayname%IF{"$LANGUAGE=\'de\'" then="de"}%_s,web,title,url,workflowmeta_lasttime_currentstate_dt,workflowmeta_lasttimecurrentstatetype_dt',
+    RESUBMISSION_SETTINGS_WEBHOME => '%IF{"istopic Settings.WebHome" then="" else="form=\"Processes.DocumentForm\""}%',
+    RESUBMISSION_EXCELEXPORT => '1',
+    RESUBMISSION_FILTERS => 'full-text-filter(Title,title_search)',
+    RESUBMISSION_INFOPAGE => '',
 };
 
 # MaintenancePlugin compatibility
