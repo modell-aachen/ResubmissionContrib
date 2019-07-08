@@ -18,13 +18,13 @@ format="(workflowmeta_lasttime_$1_dt:[NOW-$percntWEBPREF{\"RESUBMISSION_$percntC
    id="%web%_%statetype%"
    sort="workflowstate_statetype_s asc"
    rows="9999"
-   fields="topic,webtopic,web,title,url,workflowmeta_lasttime_currentstate_s,field_Responsible_s,workflowstate_displayname_s"}%%{
+   fields="topic,webtopic,web,title,url,workflowmeta_lasttime_currentstate_s,field_Responsible_s,workflowstate_displayname_s,workflowstate_displaynamede_s"}%%{
 }%%TMPL:END%
 
 %{"Set the sender:"}%
 %TMPL:DEF{"ModacMailFrom"}%%TMPL:P{"ModacNoReply"}%%TMPL:END%
 
-%TMPL:DEF{"ModacMailSubject"}%%MAKETEXT{"Keep your [_1]  up to date" arg1="%WIKITOOLNAME%"}%%TMPL:END%
+%TMPL:DEF{"ModacMailSubject"}%%MAKETEXT{"Keep your [_1] up to date" arg1="%WIKITOOLNAME%"}%%TMPL:END%
 
 %TMPL:DEF{"ModacMailTo"}%%{
   }%%FORMATLIST{"%RESUBMISSION_WEBS%" format="$percentSOLRFORMAT{\"$1_draft\" header=\"$percntWEBPREF{\"RESUBMISSION_SENDMAIL_GROUP\" web=\"$1\" alt=\"$percntRESUBMISSION_SENDMAIL_GROUP$percnt\"}$percnt\" format=\" \"}$percent"}%,%{
@@ -48,10 +48,10 @@ format="(workflowmeta_lasttime_$1_dt:[NOW-$percntWEBPREF{\"RESUBMISSION_$percntC
 }%%FORMATLIST{"%RESUBMISSION_WEBS%"
   format="$percentIF{\"$percentTMPL:P{\"isInSendMailGroup\" web=\"$1\"}$percent\" then=\"$dollarpercentTMPL:P{\\"webList\\" web=\\"$1\\" statetype=\\"approved\\"}$dollarpercent\"}$percent"
   separator=""
-}%
-%MAKETEXT{"Support the responsible users with the care of their content. Use the page „Resubmission“ to check if the content has been reviewed."}%
+}%%{
+}%%MAKETEXT{"Support the responsible users with the care of their content. Use the Page "Resubmission" to check if the content has been reviewed."}%
 %IF{"'%RESUBMISSION_INFOPAGE%' != ''" then="
-%MAKETEXT{"Learn more about resubmissions here: %SCRIPTURL%/%RESUBMISSION_INFOPAGE%"}%
+%MAKETEXT{"Learn more about resubmissions here: [_1]" arg1="%SCRIPTURL%/%RESUBMISSION_INFOPAGE%"}%
 "}%
 %MAKETEXT{"This is an automatically generated message. Please do not reply to this email."}%
 
@@ -72,9 +72,13 @@ Note: Leading 0 makes sure this is a number.
 }%%{
 }%%TMPL:END%
 
+%TMPL:DEF{"workflowstate_displayname"}%%{
+}%%IF{"$LANGUAGE='de'" then="$workflowstate_displaynamede_s" else="$workflowstate_displayname_s"}%%{
+}%%TMPL:END%
+
 %TMPL:DEF{"webList"}%%{
 }%%FORMATLIST{"%SOLRFORMAT{"%web%_%statetype%"
-  format="$workflowstate_displayname_s"
+  format="%TMPL:P{"workflowstate_displayname"}%"
   separator=","
 }%"
 unique="on"}%
