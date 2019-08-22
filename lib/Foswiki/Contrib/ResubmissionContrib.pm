@@ -26,7 +26,7 @@ our $SITEPREFS = {
     RESUBMISSION_FACETS => 'select-2-facet(Responsible,field_Responsible_dv_s),multi-select-facet(Status,workflowstate_displayname%IF{"$LANGUAGE=\'de\'" then="de"}%_s),multi-select-facet(Webs, web)',
     RESUBMISSION_INITIALSORT => 'workflowmeta_lasttime_currentstate_dt,asc',
     RESUBMISSION_FIELDRESTRICTION => '%IF{"$USE_PROCESS_DOCUMENT_NUMBER" then="field_DocumentNumber_s,"}%field_Responsible_dv_s,workflowstate_displayname%IF{"$LANGUAGE=\'de\'" then="de"}%_s,web,title,url,workflowmeta_lasttime_currentstate_dt,workflowmeta_lasttimecurrentstatetype_dt',
-    RESUBMISSION_SETTINGS_WEBHOME => '%IF{"istopic Settings.WebHome" then="" else="form=\"Processes.DocumentForm\""}%',
+    RESUBMISSION_SETTINGS_WEBHOME => '%IF{"istopic 'Settings.WebHome'" then="" else="form=\"Processes.DocumentForm\""}%',
     RESUBMISSION_EXCELEXPORT => '1',
     RESUBMISSION_FILTERS => 'full-text-filter(Title,title_search)',
     RESUBMISSION_INFOPAGE => '',
