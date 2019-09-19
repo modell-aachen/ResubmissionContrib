@@ -1,4 +1,3 @@
 # Dependencie for ResubmissionContrib
 Foswiki::Plugins::WebPrefPlugin,>0,perl,Required.
-Foswiki::Plugins::SearchGridPlugin,>0.1,perl,Required.
 
