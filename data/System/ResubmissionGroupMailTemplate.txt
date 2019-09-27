@@ -36,7 +36,6 @@ format="(workflowmeta_lasttime_$1_dt:[NOW-$percntWEBPREF{\"RESUBMISSION_$percntC
 %TMPL:DEF{"ModacMailContents"}%%{
 }%
 %MAKETEXT{"The following page(s) need(s) your attention:"}%
-
 %FORMATLIST{"%RESUBMISSION_WEBS%"
   format="$percentIF{\"$percentTMPL:P{\"isInSendMailGroup\" web=\"$1\"}$percent\" then=\"$dollarpercentTMPL:P{\\"webList\\" web=\\"$1\\" statetype=\\"draft\\"}$dollarpercent\"}$percent"
   separator=""
@@ -48,8 +47,8 @@ format="(workflowmeta_lasttime_$1_dt:[NOW-$percntWEBPREF{\"RESUBMISSION_$percntC
 }%%FORMATLIST{"%RESUBMISSION_WEBS%"
   format="$percentIF{\"$percentTMPL:P{\"isInSendMailGroup\" web=\"$1\"}$percent\" then=\"$dollarpercentTMPL:P{\\"webList\\" web=\\"$1\\" statetype=\\"approved\\"}$dollarpercent\"}$percent"
   separator=""
-}%%{
-}%%MAKETEXT{"Support the responsible users with the care of their content. Use the Page "Resubmission" to check if the content has been reviewed."}%
+}%
+%MAKETEXT{"Support the responsible users with the care of their content. Use the Page "Resubmission" to check if the content has been reviewed."}%
 %IF{"'%RESUBMISSION_INFOPAGE%' != ''" then="
 %MAKETEXT{"Learn more about resubmissions here: [_1]" arg1="%SCRIPTURL%/%RESUBMISSION_INFOPAGE%"}%
 "}%
@@ -83,7 +82,7 @@ Note: Leading 0 makes sure this is a number.
 }%"
 unique="on"}%
 %SOLRFORMAT{"%web%_%statetype%"
-  format="   * $title ($percentSCRIPTURL$percent$url) (%MAKETEXT{"Responsible"}%: $percentRENDERUSER{\"$field_Responsible_s\" convert=\"on\"}$percnt)"
+  format="   * $title ( $percentSCRIPTURL$percent$url ) (%MAKETEXT{"Responsible"}%: $percentRENDERUSER{\"$field_Responsible_s\" convert=\"on\"}$percnt)"
   separator="$n"
   footer="$n"
 }%%{

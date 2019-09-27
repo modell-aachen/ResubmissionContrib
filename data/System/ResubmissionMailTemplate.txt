@@ -42,9 +42,10 @@ format="(workflowmeta_lasttime_$1_dt:[NOW-$percntWEBPREF{\"RESUBMISSION_$percntC
 
 %MAKETEXT{"Defined time limits for resubmission:"}%
 
-%MAKETEXT{"Approved pages: [_1] days" arg1="%RESUBMISSION_APPROVED%"}%
-%MAKETEXT{"Discussions: [_1] days" arg1="%RESUBMISSION_DISCUSSION%"}%
-%MAKETEXT{"Drafts: [_1] days" arg1="%RESUBMISSION_DRAFT%"}%
+%IF{"'%RESUBMISSION_STATES%' =~ 'approved'" then="%MAKETEXT{"Approved pages: [_1] days" arg1="%RESUBMISSION_APPROVED%"}%$n"}%%{
+}%%IF{"'%RESUBMISSION_STATES%' =~ 'discussion'" then="%MAKETEXT{"Discussions: [_1] days" arg1="%RESUBMISSION_DISCUSSION%"}%$n"}%%{
+}%%IF{"'%RESUBMISSION_STATES%' =~ 'draft'" then="%MAKETEXT{"Drafts: [_1] days" arg1="%RESUBMISSION_DRAFT%"}%"}%%{
+}%
 
 %IF{"'%RESUBMISSION_INFOPAGE%' != ''" then="%MAKETEXT{"Learn more about resubmissions here: [_1]" arg1="%SCRIPTURL%/%RESUBMISSION_INFOPAGE%"}%"}%
 
@@ -56,7 +57,7 @@ format="(workflowmeta_lasttime_$1_dt:[NOW-$percntWEBPREF{\"RESUBMISSION_$percntC
 %TMPL:END%
 
 %TMPL:DEF{"webList"}%%{
-}%%SOLRFORMAT{"%web%%ModacMailCount%" format="   * $title ($percentSCRIPTURL$percent$url) ($percntWORKFLOWMETA{\"displayname\" web=\"$web\" topic=\"$topic\"}$percnt)$n" footer="$n"}%%{
+}%%SOLRFORMAT{"%web%%ModacMailCount%" format="   * $title ( $percentSCRIPTURL$percent$url ) ($percntWORKFLOWMETA{\"displayname\" web=\"$web\" topic=\"$topic\"}$percnt)$n" footer="$n"}%%{
 }%%TMPL:END%
 
 %TMPL:DEF{"ModacMailCharset"}%charset="utf-8";%TMPL:END%
