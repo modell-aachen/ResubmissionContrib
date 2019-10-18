@@ -1,7 +1,7 @@
 %TMPL:INCLUDE{"mailtemplatescontrib"}%
 
 %TMPL:DEF{"ModacMailPrimer"}%
-%SOLRSEARCH{"(%FORMATLIST{"%RESUBMISSION_WEBS%" format="(web:$1 AND ($percntTMPL:P{\"stateQuery\" web=\"$1\"}$percnt) AND -topic:($percntWEBPREF{\"RESUBMISSION_IGNORE\" web=\"$1\" alt=\"$percntRESUBMISSION_IGNORE$percnt\"}$percnt))" separator=" OR " exclude="%FORMATLIST{"%RESUBMISSION_WEBS%" format="$percntIF{\"'$percntWEBPREF{\"RESUBMISSION_SENDMAIL\" web=\"$1\" alt=\"$dollarpercntRESUBMISSION_SENDMAIL$dollarpercnt\"}$percnt'='0' or '$percntWEBPREF{\"RESUBMISSION_SENDMAIL_RESPONSIBLE\" web=\"$1\" alt=\"$dollarpercntRESUBMISSION_SENDMAIL_RESPONSIBLE$dollarpercnt\"}$percnt'='0'\" then=\"$1\"}$percnt"}%"}%) type:topic"
+%SOLRSEARCH{"(%FORMATLIST{"%RESUBMISSION_WEBS%" format="(web:$1 AND ($percntTMPL:P{\"stateQuery\" web=\"$1\"}$percnt) AND -topic:($percntWEBPREF{\"RESUBMISSION_IGNORE\" web=\"$1\" alt=\"$percntRESUBMISSION_IGNORE$percnt\"}$percnt))" separator=" OR " exclude="%FORMATLIST{"%RESUBMISSION_WEBS%" separator="|" format="$percntIF{\"'$percntWEBPREF{\"RESUBMISSION_SENDMAIL\" web=\"$1\" inherit=\"1\"}$percnt'='0' OR '$percntWEBPREF{\"RESUBMISSION_SENDMAIL_RESPONSIBLE\" web=\"$1\" inherit=\"1\"}$percnt'='0'\" then=\"($1)\"}$percnt"}%"}%) type:topic"
 rows="1"
 id="who"
 facets="field_Responsible_s"
@@ -44,8 +44,7 @@ format="(workflowmeta_lasttime_$1_dt:[NOW-$percntWEBPREF{\"RESUBMISSION_$percntC
 
 %IF{"'%RESUBMISSION_STATES%' =~ 'approved'" then="%MAKETEXT{"Approved pages: [_1] days" arg1="%RESUBMISSION_APPROVED%"}%$n"}%%{
 }%%IF{"'%RESUBMISSION_STATES%' =~ 'discussion'" then="%MAKETEXT{"Discussions: [_1] days" arg1="%RESUBMISSION_DISCUSSION%"}%$n"}%%{
-}%%IF{"'%RESUBMISSION_STATES%' =~ 'draft'" then="%MAKETEXT{"Drafts: [_1] days" arg1="%RESUBMISSION_DRAFT%"}%"}%%{
-}%
+}%%IF{"'%RESUBMISSION_STATES%' =~ 'draft'" then="%MAKETEXT{"Drafts: [_1] days" arg1="%RESUBMISSION_DRAFT%"}%"}%
 
 %IF{"'%RESUBMISSION_INFOPAGE%' != ''" then="%MAKETEXT{"Learn more about resubmissions here: [_1]" arg1="%SCRIPTURL%/%RESUBMISSION_INFOPAGE%"}%"}%
 
